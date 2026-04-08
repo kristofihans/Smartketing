@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Keyboard, Mousewheel } from 'swiper/modules';
 import { motion } from 'framer-motion';
@@ -27,6 +27,15 @@ const GalleryItem = ({ src, isActive }) => {
     setPlaying(!playing);
   };
 
+  useEffect(() => {
+    if (!isActive && playing) {
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
+      setPlaying(false);
+    }
+  }, [isActive, playing]);
+
   return (
     <motion.div
       layout
@@ -45,7 +54,6 @@ const GalleryItem = ({ src, isActive }) => {
         src={src}
         className="w-full h-full object-cover z-10 relative"
         loop
-        muted // keep muted for web standard compliance without user explicit volume intent
         playsInline
       />
       
@@ -55,6 +63,17 @@ const GalleryItem = ({ src, isActive }) => {
           <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 text-white shadow-xl">
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 ml-1">
               <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+        </div>
+      )}
+
+      {/* Hover Pause icon (only visible on hover when playing) */}
+      {playing && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+          <div className="w-20 h-20 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 text-white shadow-xl">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
             </svg>
           </div>
         </div>
