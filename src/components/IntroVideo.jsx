@@ -40,7 +40,7 @@ const IntroVideo = ({ onComplete }) => {
             animate={{ opacity: isVideoFinished ? 0 : 1 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="w-full h-full object-cover"
-            src="/introvideo.mp4"
+            src="./introvideo.mp4"
             autoPlay
             muted
             playsInline

@@ -7,10 +7,10 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 
 const galleryItems = [
-  { id: 1, videoSrc: "/video1.mp4" },
-  { id: 2, videoSrc: "/video2.mp4" },
-  { id: 3, videoSrc: "/video3.mp4" },
-  { id: 4, videoSrc: "/video4.mp4" },
+  { id: 1, videoSrc: "./video1.mp4" },
+  { id: 2, videoSrc: "./video2.mp4" },
+  { id: 3, videoSrc: "./video3.mp4" },
+  { id: 4, videoSrc: "./video4.mp4" },
 ];
 
 const GalleryItem = ({ src, isActive }) => {
