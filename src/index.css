@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black-deep: #050505;
+  --color-crimson: #DC2626;
+  --color-slate-translucent: rgba(71, 85, 105, 0.5);
+}
+
+body {
+  background-color: var(--color-black-deep);
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Base custom styles to help with Glassmorphism and glows */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-border-red {
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+}
+
+/* Custom scrollbar for an antigravity aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-crimson);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f87171;
+}
+
+/* Helper to center content in 3D perspective if needed */
+.perspective-1000 {
+  perspective: 1000px;
+}
