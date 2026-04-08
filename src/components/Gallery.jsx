@@ -68,10 +68,10 @@ const GalleryItem = ({ src, isActive }) => {
         </div>
       )}
 
-      {/* Hover Pause icon (only visible on hover when playing) */}
+      {/* Active Playing Click Overlay (Mobile friendly pause button) */}
       {playing && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-          <div className="w-20 h-20 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 text-white shadow-xl">
+        <div className="absolute inset-0 z-20 flex items-center justify-center opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity duration-300">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 text-white shadow-xl pointer-events-none">
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
               <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
             </svg>
@@ -114,6 +114,7 @@ const Gallery = () => {
           slidesPerView={'auto'}
           mousewheel={{ forceToAxis: true }}
           keyboard={true}
+          slideToClickedSlide={true}
           coverflowEffect={{
             rotate: 15,
             stretch: 0,
