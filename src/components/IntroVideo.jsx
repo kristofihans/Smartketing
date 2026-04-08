@@ -3,6 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const IntroVideo = ({ onComplete }) => {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [videoSrc, setVideoSrc] = useState('./introvideo.mp4');
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVideoSrc(window.innerWidth <= 768 ? './introvideomobile.mp4' : './introvideo.mp4');
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     // Failsafe in case video doesn't end properly or autoPlay is blocked
@@ -40,7 +50,7 @@ const IntroVideo = ({ onComplete }) => {
             animate={{ opacity: isVideoFinished ? 0 : 1 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="w-full h-full object-cover"
-            src="./introvideo.mp4"
+            src={videoSrc}
             autoPlay
             muted
             playsInline

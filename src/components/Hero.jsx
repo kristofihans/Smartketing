@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
+  const [bgImage, setBgImage] = useState('./heroimage.jpeg');
+
+  useEffect(() => {
+    const handleResize = () => {
+      setBgImage(window.innerWidth <= 768 ? './heroimagemobile.jpg' : './heroimage.jpeg');
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black text-white">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(./heroimage.jpeg)' }}
+        style={{ backgroundImage: `url(${bgImage})` }}
       ></div>
       
       {/* Overlays for contrast and Antigravity Crimson feel */}
