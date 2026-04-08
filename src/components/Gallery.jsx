@@ -38,7 +38,6 @@ const GalleryItem = ({ src, isActive }) => {
 
   return (
     <motion.div
-      layout
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={`relative w-full h-[60vh] md:h-[70vh] rounded-2xl overflow-hidden cursor-pointer ${
         playing ? 'glow-border-red border border-[#DC2626]' : 'border border-white/10'
@@ -126,7 +125,7 @@ const Gallery = () => {
           className="w-full py-10!"
         >
           {galleryItems.map((item) => (
-            <SwiperSlide key={item.id} style={{ width: 'auto' }} className="w-[80vw] sm:w-[320px] md:w-[380px] px-2">
+            <SwiperSlide key={item.id} className="w-[80vw] sm:w-[320px] md:w-[380px] px-2">
               {({ isActive }) => (
                 <GalleryItem src={item.videoSrc} isActive={isActive} />
               )}
