@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
-  const [bgImage, setBgImage] = useState('./heroimage.jpeg');
+  const [bgImage, setBgImage] = useState('./heroimage.jpg');
 
   useEffect(() => {
     const handleResize = () => {
-      setBgImage(window.innerWidth <= 768 ? './heroimagemobile.jpg' : './heroimage.jpeg');
+      setBgImage(window.innerWidth <= 768 ? './heroimagemobile.png' : './heroimage.jpg');
     };
     handleResize();
     window.addEventListener('resize', handleResize);

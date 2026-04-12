@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const IntroVideo = ({ onComplete }) => {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [videoSrc, setVideoSrc] = useState('./introvideo.mp4');
+  const [videoSrc, setVideoSrc] = useState('./intro.mp4');
 
   useEffect(() => {
     const handleResize = () => {
-      setVideoSrc(window.innerWidth <= 768 ? './introvideomobile.mp4' : './introvideo.mp4');
+      setVideoSrc(window.innerWidth <= 768 ? './intromobile.mp4' : './intro.mp4');
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -33,7 +33,7 @@ const IntroVideo = ({ onComplete }) => {
     setTimeout(() => {
       setIsPlaying(false);
       if(onComplete) onComplete();
-    }, 1500); // 1.5s fade to black duration
+    }, 500); // 0.5s fade to black duration
   };
 
   return (
@@ -43,18 +43,18 @@ const IntroVideo = ({ onComplete }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black pointer-events-none"
         >
           <motion.video
             animate={{ opacity: isVideoFinished ? 0 : 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
             className="w-full h-full object-cover"
             src={videoSrc}
             autoPlay
             muted
             playsInline
-            onLoadedData={(e) => { e.target.playbackRate = 2.0; }}
+            onLoadedData={(e) => { e.target.playbackRate = 8.0; }}
             onEnded={handleVideoEnd}
           />
         </motion.div>
